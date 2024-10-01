@@ -36,7 +36,11 @@ public class DEV_ConsoleController : MonoBehaviour
             return;
         }
 
-        outputText.text += "\n > " + command + "\n";
+        outputText.text = "";
+        outputText.text += "> " + command + "\n";
+
+        inputBox.Select();
+        inputBox.ActivateInputField();
 
         //Process the command
         ProcessCommand(command);
@@ -71,6 +75,11 @@ public class DEV_ConsoleController : MonoBehaviour
         {
             outputText.text = "";
         }
+        //"DevLog" command
+        else if(splitCommand[0].ToLower() == "devlog")
+        {
+            LoadScene("_devLog");
+        }
         else
         {
             //Unknown command
@@ -81,7 +90,11 @@ public class DEV_ConsoleController : MonoBehaviour
     //"Help" command
     private void ShowHelp()
     {
-        outputText.text += "Help: \n LoadScene - Show a list of available scenes \n LoadScene SCENENAME - Load a specific scene \n Clear - Clears the console";
+        outputText.text += "Help: " +
+            "\n LoadScene - Show a list of available scenes " +
+            "\n LoadScene SCENENAME - Load a specific scene " +
+            "\n Clear - Clears the console" +
+            "\n DevLog - Show the dev log";
     }
 
     //"LoadScene" comand

@@ -18,6 +18,10 @@ public class MainMenuController : MonoBehaviour
     {
         ClosePanels();
         mainPanel.SetActive(true);
+
+        //Show the cursor
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ToggleSettings()

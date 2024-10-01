@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DEV_ToggleConsole : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class DEV_ToggleConsole : MonoBehaviour
     bool isFivePressed;
 
     bool isConsoleActive;
+
+    public TMP_InputField inputBox;
 
     void Start()
     {
@@ -46,6 +50,13 @@ public class DEV_ToggleConsole : MonoBehaviour
             //Enable the dev console
             isConsoleActive = !isConsoleActive;
             devConsole.SetActive(isConsoleActive);
+
+            //Focus on the inputBox if the console is active
+            if (isConsoleActive && inputBox != null)
+            {
+                inputBox.Select();
+                inputBox.ActivateInputField();
+            }
 
             //Reset bools
             isLeftShiftPressed = false;
