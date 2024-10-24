@@ -23,3 +23,8 @@ V3
 
 V4
 * Merged the grey box court scene with the main game.
+
+V5
+* Added Nodes: CameraSwitchNode, PlayerFreezeNode, SceneSwitchNode
+* Updated Player: Removed unnecessary functions, added freeze and unfreeze function
+* Created a dialogue tree for the grey box level

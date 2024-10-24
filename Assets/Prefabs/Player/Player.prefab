@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 108281499082933991}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1054,47 +1054,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2be18374091246fe84150b7bf45bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCapsule: {fileID: 108281499862132976}
+  cam: {fileID: 108281499609004509}
+  rb: {fileID: 108281499082933985}
   controller: {fileID: 108281499082933987}
-  originalSpeed: 5
-  sprintSpeed: 10
-  crouchSpeed: 3
+  speed: 12
   gravity: -30
-  jumpHeight: 2
-  defaultSprintTime: 10
-  sprintSlider: {fileID: 0}
-  sprintWalkingIcon: {fileID: 0}
-  sprintRunningIcon: {fileID: 0}
-  sprintCrouchingIcon: {fileID: 0}
-  sprintEmptyIcon: {fileID: 0}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 108281498709145507}
-  roofDistance: 0.4
-  roofMask:
-    serializedVersion: 2
-    m_Bits: 128
-  roofCheck: {fileID: 108281500152183226}
-  FootstepGrass:
-  - {fileID: 108281498549612334}
-  - {fileID: 108281498916043104}
-  FootstepStone:
-  - {fileID: 108281499730666056}
-  - {fileID: 108281499230547808}
-  FootstepWater:
-  - {fileID: 108281498834316592}
-  - {fileID: 108281498623170510}
-  FootstepDirt:
-  - {fileID: 108281499119077989}
-  - {fileID: 108281499249707382}
-  grassJumpingAudio: {fileID: 108281499290546753}
-  stoneJumpingAudio: {fileID: 108281498543968938}
-  waterJumpingAudio: {fileID: 108281498556204602}
-  dirtJumpingAudio: {fileID: 108281499070207203}
-  openInventoryAudio: {fileID: 0}
-  closeInventoryAudio: {fileID: 0}
 --- !u!143 &108281499082933987
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1127,7 +1096,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &108281499082933984
 MonoBehaviour:
@@ -1559,7 +1528,7 @@ GameObject:
   - component: {fileID: 108281499258717373}
   - component: {fileID: 108281499258717374}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: PlayerCamera_Cam01
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

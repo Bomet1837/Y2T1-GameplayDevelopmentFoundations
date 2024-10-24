@@ -136,6 +136,8 @@ MonoBehaviour:
   - {fileID: -2886101708240315942}
   - {fileID: -7780647815922774572}
   - {fileID: 4270092160280096947}
+  - {fileID: 1024057098188133065}
+  - {fileID: 2143352276942468354}
   startNode: {fileID: 7965833413818196064}
 --- !u!114 &137339080372433947
 MonoBehaviour:
@@ -192,6 +194,109 @@ MonoBehaviour:
   intValue: 0
   floatValue: 0
   nextNode: {fileID: 0}
+--- !u!114 &1024057098188133065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae366b8585f80457386e342384c4b4c5, type: 3}
+  m_Name: Player Freeze
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -600, y: -72}
+  ports:
+    keys:
+    - nextNode
+    - input
+    values:
+    - _fieldName: nextNode
+      _node: {fileID: 1024057098188133065}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2143352276942468354}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: 1024057098188133065}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNode
+        node: {fileID: 7965833413818196064}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  speakerName: 
+  dialogueText: 
+  audioClip: {fileID: 0}
+  animationClip: {fileID: 0}
+  nextNode: {fileID: 0}
+  freezePlayer: 1
+--- !u!114 &2143352276942468354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f1d94eb19b34337aef9a24967d50fd, type: 3}
+  m_Name: Camera Switch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -360, y: -40}
+  ports:
+    keys:
+    - nextNode
+    - input
+    values:
+    - _fieldName: nextNode
+      _node: {fileID: 2143352276942468354}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 4053237874735348547}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: 2143352276942468354}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNode
+        node: {fileID: 1024057098188133065}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  speakerName: 
+  dialogueText: 
+  audioClip: {fileID: 0}
+  animationClip: {fileID: 0}
+  nextNode: {fileID: 0}
+  disablePlayerCam: 1
+  playerCam: {fileID: 0}
+  disableCam: {fileID: 0}
+  enableCam: {fileID: 0}
 --- !u!114 &2453013026058982156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +457,7 @@ MonoBehaviour:
   m_Name: Monologue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -184, y: -72}
+  position: {x: -120, y: -56}
   ports:
     keys:
     - nextNode
@@ -376,7 +481,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: nextNode
-        node: {fileID: 7965833413818196064}
+        node: {fileID: 2143352276942468354}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -491,7 +596,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -504, y: -72}
+  position: {x: -840, y: -56}
   ports:
     keys:
     - nextNode
@@ -502,7 +607,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 4053237874735348547}
+        node: {fileID: 1024057098188133065}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -8,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueText;
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
+
+    public GameObject FadeUI;
 
     private DialogueNode currentNode;
     private bool isProcessingChoice = false; //Used to check if the script is waiting for a choice input
@@ -51,6 +55,26 @@ public class DialogueManager : MonoBehaviour
             playerPrefNode.GetNextNode(); //Save the value
             currentNode = playerPrefNode.GetNextNode(); //Get the next node
             ProcessNode(); //Process the next node
+        }
+        else if (currentNode is PlayerFreezeNode playerFreezeNode)
+        {
+            //Automatically process the PlayerFreezeNode - This will automatically save and move to the next node
+            //This should be invisible to the user
+            currentNode = playerFreezeNode.GetNextNode(); //Get the next node
+            ProcessNode(); //Process the next node
+        }
+        else if (currentNode is CameraSwitchNode cameraSwitchNode)
+        {
+            //Automatically process the CameraSwitchNode - This will automatically save and move to the next node
+            //This should be invisible to the user
+            cameraSwitchNode.GetNextNode(); //Save the value
+            currentNode = cameraSwitchNode.GetNextNode(); //Get the next node
+            ProcessNode(); //Process the next node
+        }
+        else if (currentNode is SwitchSceneNode switchSceneNode)
+        {
+            //Fade and switch to the next scene, we do not need to do anything else
+            StartCoroutine(SwitchScene(switchSceneNode.sceneIndex));
         }
         else if (currentNode is EndNode)
         {
@@ -140,5 +164,14 @@ public class DialogueManager : MonoBehaviour
         {
             //TODO: Make animations work using the animator component
         }
+    }
+
+    private IEnumerator SwitchScene(int sceneIndex)
+    {
+        FadeUI.SetActive(true);
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        SceneManager.LoadScene(sceneIndex);
     }
 }
