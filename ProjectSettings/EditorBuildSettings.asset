@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 524770489b21c43b98d02e029f448674
   - enabled: 1
-    path: Assets/Scenes/Demos/FirstPersonMovementDemo.unity
-    guid: b0711845f4f1b4177a540ac497e38e26
+    path: Assets/Scenes/Demos/Grey Box Levels/0_Courtroom.unity
+    guid: 5dc1c71abb22f644b9053649c83693b7
   m_configObjects: {}
