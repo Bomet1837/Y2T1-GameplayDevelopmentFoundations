@@ -20,9 +20,9 @@ public class CameraSwitchNode : DialogueNode
         GameObject disableCamObj = FindObjectByName(disableCam);
         GameObject enableCamObj = FindObjectByName(enableCam);
 
-        Debug.Log("Player Cam: " + playerCamObj.name);
-        Debug.Log("Disable Cam: " + disableCamObj.name);
-        Debug.Log("Enable Cam: " + enableCamObj.name);
+        // Debug.Log("Player Cam: " + playerCamObj.name);
+        // Debug.Log("Disable Cam: " + disableCamObj.name);
+        // Debug.Log("Enable Cam: " + enableCamObj.name);
         
         if (playerCam != null)
         {

@@ -177,7 +177,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: I don't know what yet since I don't have a script...
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 6f270cf78d0544373ba6e6c3373b6dd8, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &-3937307085249590781
@@ -226,7 +226,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: Shut it!
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 3fbc77a43dbe54946a53026aec877803, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &-3765357118207171482
@@ -325,7 +325,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Kate Webster
   dialogueText: Not guilty!
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 81ba8027346cd40dd9543fcc035b991c, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &-2912358606396925167
@@ -480,7 +480,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: Kate Webster, You are here for some reason.
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 5490012bb13d04397875e7a021fda587, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &-1091049067301838463
@@ -529,7 +529,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Kate Webster
   dialogueText: Guilty!
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 9c6eb8b123c384d889bbfaf0c107f00c, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &11400000
@@ -722,7 +722,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: I knew it!
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 99dab4c3a4b92438a82a7e0d187d4fb3, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &2329147547685034501
@@ -933,7 +933,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: You're free to go!
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: fa77cbd629424468baecd52e63cb716e, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &5732432974359131055
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Kate Webster
   dialogueText: Then why are we here?
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: abd3e08d29bc5447eb567ef457fc887d, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &6831614876984518049
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: Okay, I believe you.
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: f9b4d478741c7425297250ab4eb0906e, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}
 --- !u!114 &8187487737966637124
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: Now, how do you plea?
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 3e43aded0a52343a09a5654c722db591, type: 3}
   animationClip: {fileID: 0}
   choices:
   - choiceText: Guilty
@@ -1232,6 +1232,6 @@ MonoBehaviour:
   input: {fileID: 0}
   speakerName: Judge Denman
   dialogueText: Kill her.
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 1136a62036bd8458fa6909b0dd9bf47c, type: 3}
   animationClip: {fileID: 0}
   nextNode: {fileID: 0}

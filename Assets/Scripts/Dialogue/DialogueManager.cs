@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueNode currentNode;
     private bool isProcessingChoice = false; //Used to check if the script is waiting for a choice input
+    
+    private AudioSource lastAudioSource;
 
     public void StartDialogue(StartNode startNode)
     {
@@ -89,19 +93,17 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = node.speakerName;
         dialogueText.text = node.dialogueText;
 
-        //Play the audio and animation
-        //TODO: Test this, it is untested and just threw in there
+        // Play the audio and animation
         PlayAudioClip(node.audioClip);
         TriggerAnimation(node.animationClip);
 
-        currentNode = node.GetNextNode(); //Mode to the next node when the next button is pressed
-                                          //TODO: Make it continue automatically when the audio has finished
-                                          //      This can be done by either setting a float for time - Like with Aisle 21
-                                          //      Or make it finish when the audio finishes (preferred)
+        currentNode = node.GetNextNode();
     }
 
     private void DisplayChoices(ChoiceNode node)
     {
+        PlayAudioClip(node.audioClip);
+        
         speakerText.text = node.speakerName;
         dialogueText.text = node.dialogueText;
 
@@ -151,12 +153,35 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayAudioClip(AudioClip clip)
     {
+        // Stop the previous audio if it's playing
+        if (lastAudioSource != null && lastAudioSource.isPlaying)
+        {
+            lastAudioSource.Stop();
+            Destroy(lastAudioSource.gameObject); // Clean up the AudioSource
+        }
+
         if (clip != null)
         {
-            //TODO: Test this
-            AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+            // Get the currently active camera
+            Camera activeCamera = Camera.allCameras.FirstOrDefault(cam => cam.isActiveAndEnabled);
+
+            if (activeCamera != null)
+            {
+                // Create a new GameObject for the AudioSource at the camera's position
+                GameObject audioObject = new GameObject("DialogueAudioSource");
+                audioObject.transform.position = activeCamera.transform.position;
+
+                // Add an AudioSource component, configure it, and play the clip
+                lastAudioSource = audioObject.AddComponent<AudioSource>();
+                lastAudioSource.clip = clip;
+                lastAudioSource.Play();
+
+                // Destroy the AudioSource GameObject after the clip finishes
+                Destroy(audioObject, clip.length);
+            }
         }
     }
+
 
     private void TriggerAnimation(AnimationClip animationClip)
     {

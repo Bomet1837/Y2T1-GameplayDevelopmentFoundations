@@ -28,3 +28,6 @@ V5
 * Added Nodes: CameraSwitchNode, PlayerFreezeNode, SceneSwitchNode
 * Updated Player: Removed unnecessary functions, added freeze and unfreeze function
 * Created a dialogue tree for the grey box level
+
+V6
+* Updated DialogueManager: Tested and fixed the PlayAudioClip() function
