@@ -31,3 +31,4 @@ V5
 
 V6
 * Updated DialogueManager: Tested and fixed the PlayAudioClip() function
+* Used https://ttsmp3.com for the text to speech
