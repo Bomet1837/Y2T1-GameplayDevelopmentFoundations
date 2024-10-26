@@ -4023,8 +4023,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1006353951}
   - component: {fileID: 1006353952}
+  - component: {fileID: 1006353953}
   m_Layer: 0
-  m_Name: KateWebster
+  m_Name: KateWebsterObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4097,6 +4098,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &1006353953
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006353950}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d0c9b019a95d54683a3cb96a819dbf05, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d0c9b019a95d54683a3cb96a819dbf05, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1124625672
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,8 +6769,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1850680024}
   - component: {fileID: 1850680025}
+  - component: {fileID: 1850680026}
   m_Layer: 0
-  m_Name: ThomasDenmanImage
+  m_Name: ThomasDenmanObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6826,6 +6844,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &1850680026
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850680023}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1907176614
 GameObject:
   m_ObjectHideFlags: 0

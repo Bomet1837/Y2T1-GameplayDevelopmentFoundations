@@ -16,9 +16,9 @@ public class CameraSwitchNode : DialogueNode
     // Used to continue to the next node
     public override DialogueNode GetNextNode()
     {
-        GameObject playerCamObj = FindObjectByName(playerCam);
-        GameObject disableCamObj = FindObjectByName(disableCam);
-        GameObject enableCamObj = FindObjectByName(enableCam);
+        GameObject playerCamObj = DialogueUtilities.FindObjectByName(playerCam);
+        GameObject disableCamObj = DialogueUtilities.FindObjectByName(disableCam);
+        GameObject enableCamObj = DialogueUtilities.FindObjectByName(enableCam);
 
         // Debug.Log("Player Cam: " + playerCamObj.name);
         // Debug.Log("Disable Cam: " + disableCamObj.name);
@@ -45,20 +45,5 @@ public class CameraSwitchNode : DialogueNode
         enableCamObj.SetActive(true);
         
         return GetOutputPort("nextNode").Connection.node as DialogueNode;
-    }
-    
-    private GameObject FindObjectByName(string name)
-    {
-        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
-        foreach (GameObject obj in allObjects)
-        {
-            if (obj.name == name)
-            {
-                return obj;
-            }
-        }
-
-        Debug.LogError(name + " not found");
-        return null;
     }
 }

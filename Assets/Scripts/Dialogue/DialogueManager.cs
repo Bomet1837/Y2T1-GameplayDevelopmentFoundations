@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.Animations;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -75,6 +76,14 @@ public class DialogueManager : MonoBehaviour
             currentNode = cameraSwitchNode.GetNextNode(); //Get the next node
             ProcessNode(); //Process the next node
         }
+        else if (currentNode is DestroyNode destroyNode)
+        {
+            //Automatically process the CameraSwitchNode - This will automatically save and move to the next node
+            //This should be invisible to the user
+            destroyNode.GetNextNode(); //Save the value
+            currentNode = destroyNode.GetNextNode(); //Get the next node
+            ProcessNode(); //Process the next node
+        }
         else if (currentNode is SwitchSceneNode switchSceneNode)
         {
             //Fade and switch to the next scene, we do not need to do anything else
@@ -93,9 +102,11 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = node.speakerName;
         dialogueText.text = node.dialogueText;
 
-        // Play the audio and animation
+        //Play the audio
         PlayAudioClip(node.audioClip);
-        TriggerAnimation(node.animationClip);
+        
+        //Play the animation
+        TriggerAnimation(node);
 
         currentNode = node.GetNextNode();
     }
@@ -103,6 +114,8 @@ public class DialogueManager : MonoBehaviour
     private void DisplayChoices(ChoiceNode node)
     {
         PlayAudioClip(node.audioClip);
+        
+        TriggerAnimation(node);
         
         speakerText.text = node.speakerName;
         dialogueText.text = node.dialogueText;
@@ -183,13 +196,30 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    private void TriggerAnimation(AnimationClip animationClip)
+    private void TriggerAnimation(DialogueNode node)
     {
-        if (animationClip != null)
+        if (node.animationClip != null && !string.IsNullOrEmpty(node.targetAnimationObjectName))
         {
-            //TODO: Make animations work using the animator component
+            GameObject targetObject = DialogueUtilities.FindObjectByName(node.targetAnimationObjectName);
+
+            if (targetObject != null)
+            {
+                Animation animation = targetObject.GetComponent<Animation>();
+                if (animation == null)
+                {
+                    animation = targetObject.AddComponent<Animation>();
+                }
+
+                animation.clip = node.animationClip;
+                animation.Play();
+            }
+            else
+            {
+                Debug.LogError("Target animation object not found: " + node.targetAnimationObjectName);
+            }
         }
     }
+
 
     private IEnumerator SwitchScene(int sceneIndex)
     {

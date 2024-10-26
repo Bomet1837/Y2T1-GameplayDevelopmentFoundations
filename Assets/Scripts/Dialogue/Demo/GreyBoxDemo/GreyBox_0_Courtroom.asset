@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8959921379966754872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165697c2db8b9467fb0fce6930c90634, type: 3}
+  m_Name: Destroy
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6424, y: 376}
+  ports:
+    keys:
+    - nextNode
+    - input
+    values:
+    - _fieldName: nextNode
+      _node: {fileID: -8959921379966754872}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -8104183078758685668}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: -8959921379966754872}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNode
+        node: {fileID: 2329147547685034501}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  speakerName: 
+  dialogueText: 
+  audioClip: {fileID: 0}
+  animationClip: {fileID: 0}
+  targetAnimationObjectName: 
+  nextNode: {fileID: 0}
+  objectToDestroy: KateWebsterObj
 --- !u!114 &-8475425150127859957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +99,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   sceneIndex: 2
 --- !u!114 &-8104183078758685668
@@ -63,7 +115,7 @@ MonoBehaviour:
   m_Name: Player Freeze
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 6472, y: 408}
+  position: {x: 6664, y: 360}
   ports:
     keys:
     - nextNode
@@ -87,7 +139,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: nextNode
-        node: {fileID: 2329147547685034501}
+        node: {fileID: -8959921379966754872}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -98,6 +150,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   freezePlayer: 0
 --- !u!114 &-6298151458524622862
@@ -178,7 +231,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: I don't know what yet since I don't have a script...
   audioClip: {fileID: 8300000, guid: 6f270cf78d0544373ba6e6c3373b6dd8, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &-3937307085249590781
 MonoBehaviour:
@@ -227,7 +281,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: Shut it!
   audioClip: {fileID: 8300000, guid: 3fbc77a43dbe54946a53026aec877803, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &-3765357118207171482
 MonoBehaviour:
@@ -277,6 +332,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   freezePlayer: 1
 --- !u!114 &-3195933837480494698
@@ -326,7 +382,8 @@ MonoBehaviour:
   speakerName: Kate Webster
   dialogueText: Not guilty!
   audioClip: {fileID: 8300000, guid: 81ba8027346cd40dd9543fcc035b991c, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: d0c9b019a95d54683a3cb96a819dbf05, type: 2}
+  targetAnimationObjectName: KateWebsterObj
   nextNode: {fileID: 0}
 --- !u!114 &-2912358606396925167
 MonoBehaviour:
@@ -376,6 +433,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -429,6 +487,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -481,7 +540,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: Kate Webster, You are here for some reason.
   audioClip: {fileID: 8300000, guid: 5490012bb13d04397875e7a021fda587, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &-1091049067301838463
 MonoBehaviour:
@@ -530,7 +590,8 @@ MonoBehaviour:
   speakerName: Kate Webster
   dialogueText: Guilty!
   audioClip: {fileID: 8300000, guid: 9c6eb8b123c384d889bbfaf0c107f00c, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: d0c9b019a95d54683a3cb96a819dbf05, type: 2}
+  targetAnimationObjectName: KateWebsterObj
   nextNode: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -569,6 +630,7 @@ MonoBehaviour:
   - {fileID: 2329147547685034501}
   - {fileID: 5732432974359131055}
   - {fileID: -8475425150127859957}
+  - {fileID: -8959921379966754872}
   startNode: {fileID: -6298151458524622862}
 --- !u!114 &29141520907167476
 MonoBehaviour:
@@ -618,6 +680,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -671,6 +734,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -723,7 +787,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: I knew it!
   audioClip: {fileID: 8300000, guid: 99dab4c3a4b92438a82a7e0d187d4fb3, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &2329147547685034501
 MonoBehaviour:
@@ -750,7 +815,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -8104183078758685668}
+        node: {fileID: -8959921379966754872}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -776,6 +841,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -829,6 +895,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -882,6 +949,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -934,7 +1002,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: You're free to go!
   audioClip: {fileID: 8300000, guid: fa77cbd629424468baecd52e63cb716e, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &5732432974359131055
 MonoBehaviour:
@@ -949,7 +1018,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 6840, y: 440}
+  position: {x: 7032, y: 392}
   ports:
     keys:
     - input
@@ -971,6 +1040,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
 --- !u!114 &6718302982524825328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,7 +1088,8 @@ MonoBehaviour:
   speakerName: Kate Webster
   dialogueText: Then why are we here?
   audioClip: {fileID: 8300000, guid: abd3e08d29bc5447eb567ef457fc887d, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: d0c9b019a95d54683a3cb96a819dbf05, type: 2}
+  targetAnimationObjectName: KateWebsterObj
   nextNode: {fileID: 0}
 --- !u!114 &6831614876984518049
 MonoBehaviour:
@@ -1068,6 +1139,7 @@ MonoBehaviour:
   dialogueText: 
   audioClip: {fileID: 0}
   animationClip: {fileID: 0}
+  targetAnimationObjectName: 
   nextNode: {fileID: 0}
   disablePlayerCam: 1
   playerCam: PlayerCamera_Cam01
@@ -1120,7 +1192,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: Okay, I believe you.
   audioClip: {fileID: 8300000, guid: f9b4d478741c7425297250ab4eb0906e, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}
 --- !u!114 &8187487737966637124
 MonoBehaviour:
@@ -1182,7 +1255,8 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: Now, how do you plea?
   audioClip: {fileID: 8300000, guid: 3e43aded0a52343a09a5654c722db591, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   choices:
   - choiceText: Guilty
   - choiceText: Not Guilty
@@ -1233,5 +1307,6 @@ MonoBehaviour:
   speakerName: Judge Denman
   dialogueText: Kill her.
   audioClip: {fileID: 8300000, guid: 1136a62036bd8458fa6909b0dd9bf47c, type: 3}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: dfcddbb1253f34dd2bba6ed7ed40aa9a, type: 2}
+  targetAnimationObjectName: ThomasDenmanObj
   nextNode: {fileID: 0}

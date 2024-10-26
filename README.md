@@ -32,3 +32,8 @@ V5
 V6
 * Updated DialogueManager: Tested and fixed the PlayAudioClip() function
 * Used https://ttsmp3.com for the text to speech
+
+V7
+* Added animations into the monologue and choice nodes
+* Created DestroyNode to destroy game objects from within the dialogue graph
+* Moved the FindObjectByName function into DialogueUtilities for reusability across scripts within the dialogue system

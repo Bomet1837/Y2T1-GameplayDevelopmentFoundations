@@ -8,6 +8,7 @@ public abstract class DialogueNode : Node
     public string dialogueText;
     public AudioClip audioClip;
     public AnimationClip animationClip;
+    public string targetAnimationObjectName;
 
     //This will show if it is a choice node or not, by default it is not
     public virtual bool IsChoiceNode => false;
