@@ -67,7 +67,7 @@ public class DEV_ConsoleController : MonoBehaviour
             else
             {
                 //If no scene is entered, show help
-                outputText.text += "Scenes you can load: \n MainMenu \n FirstPersonMovementDemo";
+                outputText.text += "Scenes you can load: \n MainMenu \n FirstPersonMovementDemo \n DialogueDemo \n Demo_0_Courtroom \n Demo_1_Death";
             }
         }
         //"Clear" command

@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text speakerText;
     public TMP_Text dialogueText;
+    public GameObject dialogueObject;
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
 
@@ -63,26 +64,36 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currentNode is PlayerFreezeNode playerFreezeNode)
         {
-            //Automatically process the PlayerFreezeNode - This will automatically save and move to the next node
-            //This should be invisible to the user
-            currentNode = playerFreezeNode.GetNextNode(); //Get the next node
-            ProcessNode(); //Process the next node
+            currentNode = playerFreezeNode.GetNextNode();
+            ProcessNode();
         }
         else if (currentNode is CameraSwitchNode cameraSwitchNode)
         {
-            //Automatically process the CameraSwitchNode - This will automatically save and move to the next node
-            //This should be invisible to the user
-            cameraSwitchNode.GetNextNode(); //Save the value
-            currentNode = cameraSwitchNode.GetNextNode(); //Get the next node
-            ProcessNode(); //Process the next node
+            cameraSwitchNode.GetNextNode();
+            currentNode = cameraSwitchNode.GetNextNode();
+            ProcessNode();
         }
         else if (currentNode is DestroyNode destroyNode)
         {
-            //Automatically process the CameraSwitchNode - This will automatically save and move to the next node
-            //This should be invisible to the user
-            destroyNode.GetNextNode(); //Save the value
-            currentNode = destroyNode.GetNextNode(); //Get the next node
-            ProcessNode(); //Process the next node
+            destroyNode.GetNextNode();
+            currentNode = destroyNode.GetNextNode();
+            ProcessNode();
+        }
+        else if (currentNode is EnableObjectNode enableObjectNode)
+        {
+            enableObjectNode.GetNextNode();
+            currentNode = enableObjectNode.GetNextNode();
+            ProcessNode();
+        }
+        else if (currentNode is MoveObjectNode moveObjectNode)
+        {
+            moveObjectNode.GetNextNode();
+            currentNode = moveObjectNode.GetNextNode();
+            ProcessNode();
+        }
+        else if (currentNode is ClearNode clearNode)
+        {
+            DisplayEmpty(clearNode);
         }
         else if (currentNode is SwitchSceneNode switchSceneNode)
         {
@@ -95,10 +106,23 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
         }
     }
+    
+    private void DisplayEmpty(ClearNode node)
+    {
+        speakerText.text = "";
+        dialogueText.text = "";
+        PlayAudioClip(null);
+        
+        dialogueObject.SetActive(false);
+        
+        currentNode = node.GetNextNode();
+    }
 
 
     private void DisplayMonologue(MonologueNode node)
     {
+        dialogueObject.SetActive(true);
+        
         speakerText.text = node.speakerName;
         dialogueText.text = node.dialogueText;
 

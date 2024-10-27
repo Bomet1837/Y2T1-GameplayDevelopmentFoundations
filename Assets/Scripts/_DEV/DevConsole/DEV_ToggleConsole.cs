@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class DEV_ToggleConsole : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class DEV_ToggleConsole : MonoBehaviour
 
     void Start()
     {
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
+        //Do nothing
+        #else
+        Destroy(this.GameObject());
+        #endif
+        
         devConsole.SetActive(false);
     }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1012,7 +1012,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654223937
 GameObject:
@@ -1045,7 +1045,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueGraph: {fileID: 11400000, guid: 2bc5dd7fb8c0447b4bc8aeccc50e85d4, type: 2}
   dialogueManager: {fileID: 1850616274}
-  destroyOnTrigger: 1
+  destroyOnStart: 1
+  startDelayTime: 1.5
+  triggerOptions: 0
 --- !u!4 &1654223939
 Transform:
   m_ObjectHideFlags: 0
@@ -1059,8 +1061,65 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1668842035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 875.2314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 557.4313
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.4866858
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675385507364493001, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
+      propertyPath: m_Name
+      value: _DEV
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e9bd681a4817489f8e71ec2b9a6aa1c, type: 3}
 --- !u!1 &1850616273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,8 +1151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 790585025}
   dialogueText: {fileID: 93639842}
+  dialogueObject: {fileID: 0}
   choiceButtonPrefab: {fileID: 4300689124954493688, guid: 1708cc56e26c64f5395ffba97b4a86af, type: 3}
   choiceButtonContainer: {fileID: 1369899031}
+  FadeUI: {fileID: 0}
 --- !u!4 &1850616275
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,7 +1169,7 @@ Transform:
   m_Children:
   - {fileID: 707650541}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913797944
 GameObject:

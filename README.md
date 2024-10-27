@@ -37,3 +37,12 @@ V7
 * Added animations into the monologue and choice nodes
 * Created DestroyNode to destroy game objects from within the dialogue graph
 * Moved the FindObjectByName function into DialogueUtilities for reusability across scripts within the dialogue system
+
+V8 
+* Created demo character objects for the grey box scene to give a more realistic view on how the characters will look
+* Added textures onto the grey box demo
+* Created an EnableObjectNode script
+* Added a freezeOnStart bool to the FirstPersonMovement script to freeze the player on start if the developer wishes with the option to also allow the cam or freeze the cam with it using the enableCamOnFreeze bool
+* New node: Move object
+* New node: Comment node
+* Edit node: EnableObjectNode: Add option to disable object

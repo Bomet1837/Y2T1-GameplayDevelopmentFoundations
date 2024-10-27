@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1716941289570445593
 Transform:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716941289570445598}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 936.00476, y: 580.63354, z: -4.8632965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 1716941289700139270}
   dialogueText: {fileID: 1716941290257123802}
+  dialogueObject: {fileID: 1716941290790164578}
   choiceButtonPrefab: {fileID: 4300689124954493688, guid: 1708cc56e26c64f5395ffba97b4a86af, type: 3}
   choiceButtonContainer: {fileID: 1716941290740881750}
   FadeUI: {fileID: 1716941291024412277}

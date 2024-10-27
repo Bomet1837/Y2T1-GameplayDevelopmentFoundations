@@ -19,9 +19,8 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        // Getting game ready
-        //Cursor.lockState = CursorLockMode.Locked; // Locking the cursor to the center of the screen
-        //Cursor.visible = false; // Hiding the cursor
+        Cursor.lockState = CursorLockMode.Locked; //Locking the cursor to the center of the screen
+        Cursor.visible = false; //Hiding the cursor
     }
 
     void Update()
@@ -51,5 +50,21 @@ public class CameraController : MonoBehaviour
     public void FreezeToggle(bool toggleState)
     {
         isFrozen = toggleState;
+
+        EnableCursor(toggleState);
+    }
+
+    public void EnableCursor(bool toggleState)
+    {
+        if (toggleState)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

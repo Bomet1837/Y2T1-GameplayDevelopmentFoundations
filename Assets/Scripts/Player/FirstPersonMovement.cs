@@ -14,7 +14,8 @@ public class FirstPersonMovement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CharacterController controller;
 
-    [SerializeField] private float speed = 12;
+    [SerializeField] private float speed = 6;
+    private float defaultSpeed;
     [SerializeField] private float gravity = -30;
 
     Vector3 _velocity;
@@ -29,6 +30,10 @@ public class FirstPersonMovement : MonoBehaviour
 
     [Header("Freezing")] 
     private bool _isFrozen;
+    
+    [Header("Custom Events")]
+    [SerializeField] private bool freezeOnStart = false;
+    [SerializeField] private bool enableCamOnFreezeStart = false;
 
     void Awake()
     {
@@ -39,6 +44,25 @@ public class FirstPersonMovement : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        //Check if there are errors in the custom events
+        CheckErrors();
+        
+        defaultSpeed = speed;
+
+        if (freezeOnStart)
+        {
+            FreezePlayer();
+
+            if (enableCamOnFreezeStart)
+            {
+                //Used if you want to freeze the player on start but allow the camera to work
+                cam.FreezeToggle(false);
+            }
         }
     }
     
@@ -117,22 +141,30 @@ public class FirstPersonMovement : MonoBehaviour
     {
         _isFrozen = true;
 
+        speed = 0;
+
         _velocity.x = 0f;
         _velocity.z = 0f;
         
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         cam.FreezeToggle(true);
     }
 
     public void UnfreezePlayer()
     {
         _isFrozen = false;
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
+        speed = defaultSpeed;
         
         cam.FreezeToggle(false);
+    }
+
+    private void CheckErrors()
+    {
+        if (enableCamOnFreezeStart == true && freezeOnStart == false)
+        {
+            Debug.LogWarning("enableCamOnFreezeStart should be set to false if freezeOnStart is false. \n Fixing error.");
+
+            enableCamOnFreezeStart = false;
+        }
     }
 }
