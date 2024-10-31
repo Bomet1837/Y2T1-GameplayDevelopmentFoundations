@@ -70,6 +70,16 @@ public class DEV_ConsoleController : MonoBehaviour
                 outputText.text += "Scenes you can load: \n MainMenu \n FirstPersonMovementDemo \n DialogueDemo \n Demo_0_Courtroom \n Demo_1_Death";
             }
         }
+        //"ReloadScene" command
+        else if (splitCommand[0].ToLower() == "reloadscene")
+        {
+            LoadScene(SceneManager.GetActiveScene().name);
+        }
+        //"RestartGame" command
+        else if (splitCommand[0].ToLower() == "restartgame")
+        {
+            LoadScene("MainMenu");
+        }
         //"Clear" command
         else if(splitCommand[0].ToLower() == "clear")
         {
@@ -93,6 +103,7 @@ public class DEV_ConsoleController : MonoBehaviour
         outputText.text += "Help: " +
             "\n LoadScene - Show a list of available scenes " +
             "\n LoadScene SCENENAME - Load a specific scene " +
+            "\n ReloadScene - Reloads the current scene" +
             "\n Clear - Clears the console" +
             "\n DevLog - Show the dev log";
     }

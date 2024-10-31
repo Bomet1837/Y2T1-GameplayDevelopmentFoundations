@@ -24,6 +24,18 @@ public class MainMenuController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsPanel.activeInHierarchy)
+            {
+                ClosePanels();
+                mainPanel.SetActive(true);
+            }
+        }
+    }
+
     public void ToggleSettings()
     {
         if (!settingsPanel.activeInHierarchy)

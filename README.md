@@ -46,3 +46,15 @@ V8
 * New node: Move object
 * New node: Comment node
 * Edit node: EnableObjectNode: Add option to disable object
+
+V9
+* Added the template scenes into the main project
+* Fixed the pause menu - It now shows and hides the mouse correctly.
+* Created an options menu - There is a visual representation of an options menu available. There is a script available for it in Scripts/MainMenu/Options however, it is incomplete. The options menu is there to show for the prototype.
+* Removed the next button when making a choice
+* Fixed the UI formatting
+* Added "ReloadScene" command into the dev console
+* Added "RestartGame" command into the dev console
+* Added start logos and information to the main menu, this will show on load of the game. You can press space to skip this.
+* Created an empty world template in /Scenes/Levels/Templates with all the parts necessary for a scene. This can be copied and expanded upon to create a new scene.
+* Fixed cursor enable/disable on start - The cursor is now controlled by the GameManager instance

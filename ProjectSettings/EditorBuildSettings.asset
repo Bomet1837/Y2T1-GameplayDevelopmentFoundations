@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Demos/Grey Box Levels/Demo_0_Courtroom.unity
     guid: 5dc1c71abb22f644b9053649c83693b7
   - enabled: 1
-    path: Assets/Scenes/Demos/Grey Box Levels/Demo_1_Death.unity
-    guid: 4022f608e546d444bbb24b0b6e78c15e
+    path: Assets/Scenes/Levels/_Templates/EmptyWorldTemplate.unity
+    guid: 144307ee132430046b8e205ebcad36f7
   - enabled: 1
-    path: Assets/Scenes/Demos/DialogueDemo.unity
-    guid: 19db61a96b32ffd4b9bc09cbd4f4cda6
+    path: Assets/Scenes/Levels/_Templates/HouseTemplate.unity
+    guid: 5a67c06be5a085b439cd7e249a1b03d4
   - enabled: 1
-    path: Assets/Scenes/Demos/FirstPersonMovementDemo.unity
-    guid: b0711845f4f1b4177a540ac497e38e26
+    path: Assets/Scenes/Levels/_Templates/CourtroomTemplate.unity
+    guid: 1f1e2c08327ba0141ad55ba7475840d2
+  - enabled: 1
+    path: Assets/Scenes/_DEV/_devLog.unity
+    guid: 884b132af43b142f183511cb55d47d41
   m_configObjects: {}

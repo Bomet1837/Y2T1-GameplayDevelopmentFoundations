@@ -16,11 +16,22 @@ public class DialogueManager : MonoBehaviour
     public Transform choiceButtonContainer;
 
     public GameObject FadeUI;
+    public GameObject nextButton;
 
     private DialogueNode currentNode;
     private bool isProcessingChoice = false; //Used to check if the script is waiting for a choice input
     
     private AudioSource lastAudioSource;
+
+    private bool isGamePaused;
+
+    void Start()
+    {
+        if (PauseMenuManager.Instance != null)
+        {
+            PauseMenuManager.Instance.OnPausedStatusChanged.AddListener(OnPausedChanged);
+        }
+    }
 
     public void StartDialogue(StartNode startNode)
     {
@@ -44,66 +55,76 @@ public class DialogueManager : MonoBehaviour
 
     private void ProcessNode()
     {
-        ClearChoiceButtons(); //Clear the choice buttons
+        if (!isGamePaused)
+        {
+            ClearChoiceButtons(); //Clear the choice buttons
 
-        if (currentNode is MonologueNode monologueNode)
-        {
-            DisplayMonologue(monologueNode);
+            nextButton.SetActive(true);
+
+            if (currentNode is MonologueNode monologueNode)
+            {
+                DisplayMonologue(monologueNode);
+            }
+            else if (currentNode is ChoiceNode choiceNode)
+            {
+                nextButton.SetActive(false);
+                DisplayChoices(choiceNode);
+            }
+            else if (currentNode is PlayerPrefNode playerPrefNode)
+            {
+                //Automatically process the PlayerPrefNode - This will automatically save and move to the next node
+                //This should be invisible to the user
+                playerPrefNode.GetNextNode(); //Save the value
+                currentNode = playerPrefNode.GetNextNode(); //Get the next node
+                ProcessNode(); //Process the next node
+            }
+            else if (currentNode is PlayerFreezeNode playerFreezeNode)
+            {
+                currentNode = playerFreezeNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is CameraSwitchNode cameraSwitchNode)
+            {
+                cameraSwitchNode.GetNextNode();
+                currentNode = cameraSwitchNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is DestroyNode destroyNode)
+            {
+                destroyNode.GetNextNode();
+                currentNode = destroyNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is EnableObjectNode enableObjectNode)
+            {
+                enableObjectNode.GetNextNode();
+                currentNode = enableObjectNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is MoveObjectNode moveObjectNode)
+            {
+                moveObjectNode.GetNextNode();
+                currentNode = moveObjectNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is ClearNode clearNode)
+            {
+                DisplayEmpty(clearNode);
+            }
+            else if (currentNode is SwitchSceneNode switchSceneNode)
+            {
+                //Fade and switch to the next scene, we do not need to do anything else
+                StartCoroutine(SwitchScene(switchSceneNode.sceneIndex));
+            }
+            else if (currentNode is EndNode)
+            {
+                //If we see an end node, end the dialogue
+                EndDialogue();
+            }
         }
-        else if (currentNode is ChoiceNode choiceNode)
+        else
         {
-            DisplayChoices(choiceNode);
-        }
-        else if (currentNode is PlayerPrefNode playerPrefNode)
-        {
-            //Automatically process the PlayerPrefNode - This will automatically save and move to the next node
-            //This should be invisible to the user
-            playerPrefNode.GetNextNode(); //Save the value
-            currentNode = playerPrefNode.GetNextNode(); //Get the next node
-            ProcessNode(); //Process the next node
-        }
-        else if (currentNode is PlayerFreezeNode playerFreezeNode)
-        {
-            currentNode = playerFreezeNode.GetNextNode();
-            ProcessNode();
-        }
-        else if (currentNode is CameraSwitchNode cameraSwitchNode)
-        {
-            cameraSwitchNode.GetNextNode();
-            currentNode = cameraSwitchNode.GetNextNode();
-            ProcessNode();
-        }
-        else if (currentNode is DestroyNode destroyNode)
-        {
-            destroyNode.GetNextNode();
-            currentNode = destroyNode.GetNextNode();
-            ProcessNode();
-        }
-        else if (currentNode is EnableObjectNode enableObjectNode)
-        {
-            enableObjectNode.GetNextNode();
-            currentNode = enableObjectNode.GetNextNode();
-            ProcessNode();
-        }
-        else if (currentNode is MoveObjectNode moveObjectNode)
-        {
-            moveObjectNode.GetNextNode();
-            currentNode = moveObjectNode.GetNextNode();
-            ProcessNode();
-        }
-        else if (currentNode is ClearNode clearNode)
-        {
-            DisplayEmpty(clearNode);
-        }
-        else if (currentNode is SwitchSceneNode switchSceneNode)
-        {
-            //Fade and switch to the next scene, we do not need to do anything else
-            StartCoroutine(SwitchScene(switchSceneNode.sceneIndex));
-        }
-        else if (currentNode is EndNode)
-        {
-            //If we see an end node, end the dialogue
-            EndDialogue();
+            return;
         }
     }
     
@@ -252,5 +273,12 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         
         SceneManager.LoadScene(sceneIndex);
+    }
+    
+    private void OnPausedChanged(bool isPaused)
+    {
+        //TODO: Complete the pauseing in the DialogueManager
+            //Bugs: Audio continue whilst paused, animations continue whilst paused, when the player unpauses, the cursor hides and locks.
+        isGamePaused = isPaused;
     }
 }

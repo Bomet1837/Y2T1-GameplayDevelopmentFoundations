@@ -19,8 +19,6 @@ public class FirstPersonMovement : MonoBehaviour
     [SerializeField] private float gravity = -30;
 
     Vector3 _velocity;
-    
-    bool _isMoving;
 
     [Header("Ground")]
     bool _isGrounded;
@@ -50,7 +48,14 @@ public class FirstPersonMovement : MonoBehaviour
     void Start()
     {
         //Check if there are errors in the custom events
+        //This must come first
         CheckErrors();
+        
+        //Listen for pausing
+        if (PauseMenuManager.Instance != null)
+        {
+            PauseMenuManager.Instance.OnPausedStatusChanged.AddListener(OnPausedChanged);
+        }
         
         defaultSpeed = speed;
 
@@ -125,16 +130,6 @@ public class FirstPersonMovement : MonoBehaviour
         _velocity.y += gravity * Time.deltaTime;
 
         controller.Move(_velocity * Time.deltaTime);
-
-        //Checking if you are moivng
-        if (x != 0 || z != 0)
-        {
-            _isMoving = true;
-        }
-        else
-        {
-            _isMoving = false;
-        }
     }
 
     public void FreezePlayer()
@@ -165,6 +160,19 @@ public class FirstPersonMovement : MonoBehaviour
             Debug.LogWarning("enableCamOnFreezeStart should be set to false if freezeOnStart is false. \n Fixing error.");
 
             enableCamOnFreezeStart = false;
+        }
+    }
+    
+    //For the pause
+    private void OnPausedChanged(bool isPaused)
+    {
+        if (isPaused)
+        {
+            FreezePlayer();
+        }
+        else
+        {
+            UnfreezePlayer();
         }
     }
 }

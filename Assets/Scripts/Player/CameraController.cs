@@ -7,13 +7,10 @@ using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
     public float mouseSensitivity = 5f;
-    private float xRotation = 0f;
-    private float yRotation = 0f;
-
-    public Transform playerBody;
-
     private float rotationX = 0f;
     private float rotationY = 0f;
+
+    public Transform playerBody;
 
     private bool isFrozen;
 
@@ -51,20 +48,6 @@ public class CameraController : MonoBehaviour
     {
         isFrozen = toggleState;
 
-        EnableCursor(toggleState);
-    }
-
-    public void EnableCursor(bool toggleState)
-    {
-        if (toggleState)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        GameManager.instance.ToggleCursor(toggleState);
     }
 }
