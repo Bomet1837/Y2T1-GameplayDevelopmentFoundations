@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
     {
         if (toggleState)
         {
-            Debug.Log("Cursor: Enabled");
+            //Debug.Log("Cursor: Enabled");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
-            Debug.Log("Cursor: Disabled");
+            //Debug.Log("Cursor: Disabled");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }

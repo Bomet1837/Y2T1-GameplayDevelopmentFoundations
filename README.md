@@ -58,3 +58,14 @@ V9
 * Added start logos and information to the main menu, this will show on load of the game. You can press space to skip this.
 * Created an empty world template in /Scenes/Levels/Templates with all the parts necessary for a scene. This can be copied and expanded upon to create a new scene.
 * Fixed cursor enable/disable on start - The cursor is now controlled by the GameManager instance
+
+V10
+* Created a scene template for the Level. This can be found by going to "File/New Scene" and clicking "Level Template"
+* Added Cinzel as the main font
+* Created a hint popup
+* Fixed the canvas scaler with the following:
+  * UI Scale Mode: Scale With Screen Size
+  * Reference Resolution: X: 1920, Y: 1080
+  * Screen Match Mode: Match Width Or Height
+  * Match: 0.5
+* Created a Hint_TriggerTemplate script in Scripts/Hint/HintTriggers which can be copied to create a trigger for when and if hints are needed
