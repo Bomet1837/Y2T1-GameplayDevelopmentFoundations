@@ -192,6 +192,8 @@ public class SettingsUI : MonoBehaviour
     //Panels
     public void ActivatePanel(GameObject activePanel)
     {
+        AudioManager.instance.PlayUIClick();
+        
         GraphicsPanel.SetActive(false);
         AudioPanel.SetActive(false);
         UIPanel.SetActive(false);

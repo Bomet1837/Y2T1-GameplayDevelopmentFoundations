@@ -3,25 +3,35 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class MainMenuController : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject mainPanel;
     public GameObject settingsPanel;
+    public GameObject startupLogos;
 
+    [Header("Main Panel")] 
+    public TMP_Text versionText;
+    
     [Header("Loading Screen")]
     public GameObject loadingPanel;
     public TMP_Text loadingPercentage;
 
     void Start()
     {
+        startupLogos.SetActive(true);
+        
         ClosePanels();
         mainPanel.SetActive(true);
 
         //Show the cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        
+        //Set the versionText
+        versionText.text = Application.version;
     }
 
     private void Update()
@@ -38,6 +48,8 @@ public class MainMenuController : MonoBehaviour
 
     public void ToggleSettings()
     {
+        AudioManager.instance.PlayUIClick();
+        
         if (!settingsPanel.activeInHierarchy)
         {
             ClosePanels();
@@ -52,6 +64,8 @@ public class MainMenuController : MonoBehaviour
 
     public void QuitGame()
     {
+        AudioManager.instance.PlayUIClick();
+        
         Debug.Log("Quitting Game");
 
 #if UNITY_EDITOR
@@ -63,6 +77,8 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGame(int scene)
     {
+        AudioManager.instance.PlayUIClick();
+        
         ClosePanels();
         loadingPanel.SetActive(true);
 

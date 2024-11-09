@@ -9,15 +9,15 @@ public class PauseMenuManager : MonoBehaviour
 {
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject backgroundMusic;
     private bool isGamePaused;
 
     public UnityEvent<bool> OnPausedStatusChanged;
-
-    public GameObject optionsMenu;
     
     [Header("Loading Screen")]
-    public GameObject loadingPanel;
-    public TMP_Text loadingPercentage;
+    [SerializeField] private GameObject loadingPanel;
+    [SerializeField] private TMP_Text loadingPercentage;
     
     public static PauseMenuManager Instance;
 
@@ -29,7 +29,8 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Debug.Log("Destroying");
+            Destroy(this);
         }
     }
 
@@ -44,7 +45,7 @@ public class PauseMenuManager : MonoBehaviour
                 optionsMenu.SetActive(false);
                 pauseMenuUI.SetActive(true);
 
-                TogglePause();
+                TogglePause(0);
             }
             else
             {
@@ -52,7 +53,7 @@ public class PauseMenuManager : MonoBehaviour
                 optionsMenu.SetActive(false);
                 pauseMenuUI.SetActive(false);
 
-                TogglePause();
+                TogglePause(1);
             }
         }
     }
@@ -60,18 +61,27 @@ public class PauseMenuManager : MonoBehaviour
     //Button functions
     public void ResumeButton(bool pause)
     {
+        AudioManager.instance.PlayUIClick();
+        
         pauseMenuUI.SetActive(pause);
+        
+        backgroundMusic.SetActive(pause);
 
-        TogglePause();
+        TogglePause(1);
     }
 
-    public void EnableOptions()
+    public void ToggleOptions(bool toggle)
     {
-        optionsMenu.SetActive(true);
+        AudioManager.instance.PlayUIClick();
+        
+        pauseMenuUI.SetActive(!toggle);
+        optionsMenu.SetActive(toggle);
     }
 
     public void LoadMainMenu()
     {
+        AudioManager.instance.PlayUIClick();
+        
         loadingPanel.SetActive(true);
 
         Debug.Log("Loading Scene: " + SceneManager.GetSceneByBuildIndex(0));
@@ -107,10 +117,51 @@ public class PauseMenuManager : MonoBehaviour
     }
     
     //The event
-    public void TogglePause()
+    public void TogglePause(float TimeScale)
     {
         isGamePaused = !isGamePaused; //Quicker than using if statement
 
+        ToggleAllAudio(); //Pause/Unpause audio
+
+        if (TimeScale == 1)
+        {
+            //Stop background music
+            backgroundMusic.SetActive(false);
+        }
+        else
+        {
+            //Play background music
+            backgroundMusic.SetActive(true);
+        }
+
+        Time.timeScale = TimeScale;
+
         OnPausedStatusChanged.Invoke(isGamePaused);
+    }
+
+    void ToggleAllAudio()
+    {
+        //Find each audio source in the scene
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            if (isGamePaused)
+            {
+                //Pause the audio if it is playing
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Pause();
+                }
+            }
+            else
+            {
+                //Unpause the audio if it was previously paused
+                if (!audioSource.isPlaying && audioSource.time > 0)
+                {
+                    audioSource.UnPause();
+                }
+            }
+        }
     }
 }

@@ -76,11 +76,6 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        //TODO: Add cleanup
-    }
-
     private void EnableDialogueUi()
     {
         dialogueManager.gameObject.SetActive(true);

@@ -33,6 +33,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        //Fixing a bug to force show cursor when it hides
+        if (dialogueObject.activeInHierarchy && Cursor.visible == false)
+        {
+            Debug.LogWarning("Cursor invisible, making visible");
+            
+            GameManager.instance.ToggleCursor(true);
+        }
+    }
+
     public void StartDialogue(StartNode startNode)
     {
         currentNode = startNode.GetNextNode();
@@ -41,6 +52,8 @@ public class DialogueManager : MonoBehaviour
 
     public void OnNextButtonClicked()
     {
+        AudioManager.instance.PlayUIClick();
+        
         if (isProcessingChoice)
         {
             //If waiting for a choice, wait until a choice is made
@@ -166,7 +179,6 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = node.dialogueText;
 
         isProcessingChoice = true; //The user should now be in a choice, do not allow the next button to work
-                                   //TODO: Hide the next button
 
         for (int i = 0; i < node.choices.Length; i++)
         {
@@ -185,10 +197,11 @@ public class DialogueManager : MonoBehaviour
     //When a button is selected
     private void SelectChoice(ChoiceNode node, int choiceIndex)
     {
+        AudioManager.instance.PlayUIClick();
+        
         ClearChoiceButtons(); //Clear the choice buttons when
         currentNode = node.GetNextNodeForChoice(choiceIndex); //Get the next node based on the output of the choice
         isProcessingChoice = false; //Enable the next button
-                                    //TODO: The oposite of making he button hide - Show the next button
         ProcessNode(); //Continue to the next node
     }
 
@@ -277,8 +290,7 @@ public class DialogueManager : MonoBehaviour
     
     private void OnPausedChanged(bool isPaused)
     {
-        //TODO: Complete the pauseing in the DialogueManager
-            //Bugs: Audio continue whilst paused, animations continue whilst paused, when the player unpauses, the cursor hides and locks.
+        //Bugs: Audio continue whilst paused, animations continue whilst paused, when the player unpauses, the cursor hides and locks.
         isGamePaused = isPaused;
     }
 }

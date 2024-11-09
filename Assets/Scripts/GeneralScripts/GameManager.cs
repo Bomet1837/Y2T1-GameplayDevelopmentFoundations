@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private bool cursorStartState;
+    [SerializeField] private float speedStartState = 1f;
 
     public static GameManager instance;
 
-    //TODO: Make this script manage general audio levels
-    //TODO: Make this script manage game speed
+    private bool cursorState;
 
     private void Awake()
     {
@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     {
         //Set the initial settings
         ToggleCursor(cursorStartState);
+        cursorState = cursorStartState;
+
+        GameSpeed(speedStartState);
     }
 
     public void ToggleCursor(bool toggleState)
@@ -36,12 +39,26 @@ public class GameManager : MonoBehaviour
             //Debug.Log("Cursor: Enabled");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            cursorState = true;
         }
         else
         {
             //Debug.Log("Cursor: Disabled");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            cursorState = false;
         }
+    }
+
+    public void GameSpeed(float speed)
+    {
+        Time.timeScale = speed;
+    }
+
+    public float GetGameSpeed()
+    {
+        return Time.timeScale;
     }
 }

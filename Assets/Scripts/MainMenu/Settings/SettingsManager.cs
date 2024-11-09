@@ -123,8 +123,6 @@ public class SettingsManager : MonoBehaviour
         float masterVolume = PlayerPrefs.GetFloat("Settings_Audio_MasterVolume", 100) / 100.0f;
         AudioListener.volume = masterVolume;
 
-        //TODO: Setup individual AudioSources for Music, Voices, Footsteps and UI
-
         //Get the audio sources
         AudioSource musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
         AudioSource voiceSource = GameObject.FindGameObjectWithTag("VoiceSource").GetComponent<AudioSource>();
