@@ -1682,6 +1682,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1990249858}
     m_Modifications:
+    - target: {fileID: 1262645952317810635, guid: 19037361af690401a8c7b9ef11ca6ad6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262645952856970121, guid: 19037361af690401a8c7b9ef11ca6ad6, type: 3}
+      propertyPath: notificationAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e4fd6bbf395240f798003b184a32ddf, type: 3}
     - target: {fileID: 1262645952856970122, guid: 19037361af690401a8c7b9ef11ca6ad6, type: 3}
       propertyPath: m_RootOrder
       value: 4

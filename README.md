@@ -102,3 +102,8 @@ V11
   * Added a back button in the options panel
   * Added timescale to the pause menu to freeze the game
   * Created a ToggleAllAudio function in the PauseMenuManager to pause/unpause currently running audio sources
+
+V12
+* Updated hint UI
+* Added a Billboarding script
+* Added a test cross texture

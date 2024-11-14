@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        //Fixing a bug to force show cursor when it hides
+        //This is a way to force show the cursor when it hides
         if (dialogueObject.activeInHierarchy && Cursor.visible == false)
         {
             Debug.LogWarning("Cursor invisible, making visible");
@@ -290,7 +290,6 @@ public class DialogueManager : MonoBehaviour
     
     private void OnPausedChanged(bool isPaused)
     {
-        //Bugs: Audio continue whilst paused, animations continue whilst paused, when the player unpauses, the cursor hides and locks.
         isGamePaused = isPaused;
     }
 }

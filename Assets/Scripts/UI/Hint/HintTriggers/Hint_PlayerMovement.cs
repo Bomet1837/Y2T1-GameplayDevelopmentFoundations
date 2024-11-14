@@ -32,7 +32,7 @@ public class Hint_PlayerMovement : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            Debug.Log("Player moved, disabling player movement hint");
+            //Debug.Log("Player moved, disabling player movement hint");
 
             Destroy(this);
         }
