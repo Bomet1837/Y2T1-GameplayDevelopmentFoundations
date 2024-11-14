@@ -38,7 +38,6 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //TODO: Make this simpler
             if (!isGamePaused)
             {
                 //Pause Game
