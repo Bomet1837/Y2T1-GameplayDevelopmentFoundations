@@ -50,6 +50,7 @@ MonoBehaviour:
   dialogueObject: {fileID: 1716941290790164578}
   choiceButtonPrefab: {fileID: 4300689124954493688, guid: 1708cc56e26c64f5395ffba97b4a86af, type: 3}
   choiceButtonContainer: {fileID: 1716941290740881750}
+  monologueUI: {fileID: 1716941290542705574}
   FadeUI: {fileID: 1716941291024412277}
   nextButton: {fileID: 7135195254585533552}
 --- !u!1 &1716941289700139271

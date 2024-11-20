@@ -99,13 +99,16 @@ public class FirstPersonMovement : MonoBehaviour
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (_isGrounded && _velocity.y < 0)
+        //Reset the velocity
+        if (_velocity.y < 0)
         {
-            _velocity.y = -2f; //Add a small downward force
+            _velocity.y = -2f;
         }
         
-        _velocity.y += gravity * Time.deltaTime; //Add the gravity
-        controller.Move(_velocity * Time.deltaTime); //Move the player vertically
+        //Apply the gravity
+        _velocity.y += gravity * Time.deltaTime;
+        
+        controller.Move(new Vector3(0f, _velocity.y, 0f) * Time.deltaTime);
     }
 
     //Walking
@@ -113,10 +116,10 @@ public class FirstPersonMovement : MonoBehaviour
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Setting up the GroundCheck gameobject to check for ground
 
-        if (_isGrounded && _velocity.y < 0) //Making sure you are grounded by forcing the player onto the ground
-        {
-            _velocity.y = -2f;
-        }
+        // if (_isGrounded && _velocity.y < 0) //Making sure you are grounded by forcing the player onto the ground
+        // {
+        //     _velocity.y = -2f;
+        // }
 
         //Getting the movement input
         float x = Input.GetAxis("Horizontal");
@@ -126,8 +129,6 @@ public class FirstPersonMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * (speed * Time.deltaTime));
-
-        _velocity.y += gravity * Time.deltaTime;
 
         controller.Move(_velocity * Time.deltaTime);
     }

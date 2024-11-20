@@ -15,10 +15,6 @@ public class PauseMenuManager : MonoBehaviour
 
     public UnityEvent<bool> OnPausedStatusChanged;
     
-    [Header("Loading Screen")]
-    [SerializeField] private GameObject loadingPanel;
-    [SerializeField] private TMP_Text loadingPercentage;
-    
     public static PauseMenuManager Instance;
 
     void Awake()
@@ -80,39 +76,8 @@ public class PauseMenuManager : MonoBehaviour
     public void LoadMainMenu()
     {
         AudioManager.instance.PlayUIClick();
-        
-        loadingPanel.SetActive(true);
 
-        Debug.Log("Loading Scene: " + SceneManager.GetSceneByBuildIndex(0));
-
-        StartCoroutine(LoadSceneAsync(0));
-    }
-    
-    private IEnumerator LoadSceneAsync(int sceneIndex)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex); //Start loading the scene
-
-        operation.allowSceneActivation = false; //Making sure the scene does not load until completed
-
-        while (!operation.isDone)
-        {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
-
-            //Update the loading bar with progress
-            if (loadingPercentage != null)
-            {
-                float newProgress = progress * 100;
-                loadingPercentage.text = "Loading: " + newProgress.ToString() + "%";
-            }
-
-            //If loading is done (progress = 0.9)
-            if (operation.progress >= 0.9f)
-            {
-                operation.allowSceneActivation = true; //Load the scene
-            }
-
-            yield return null; //Error correction
-        }
+        LoadingController.instance.LoadScene(0);
     }
     
     //The event

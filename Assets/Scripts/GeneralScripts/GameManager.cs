@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    
+    [Header("Scene Information")]
+    [SerializeField] private string sceneCommonName;
+    [SerializeField] private string sceneIdentifierName;
+    
+    [Header("Cursor")]
     [SerializeField] private bool cursorStartState;
     [SerializeField] private float speedStartState = 1f;
-
-    public static GameManager instance;
-
     private bool cursorState;
+    
+    [Header("Start Objects")]
+    [SerializeField] private GameObject[] enableObjects;
 
     private void Awake()
     {
@@ -21,6 +29,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        if (enableObjects != null)
+        {
+            StartEnablingObjects();
+        }
     }
 
     private void Start()
@@ -30,6 +43,16 @@ public class GameManager : MonoBehaviour
         cursorState = cursorStartState;
 
         GameSpeed(speedStartState);
+
+        if (sceneCommonName == null || (sceneCommonName == "Template Scene" && SceneManager.GetActiveScene().name != "EmptyWorldTemplate"))
+        {
+            Debug.LogError("Scene Common Name is missing.");
+        }
+
+        if (sceneIdentifierName == null || (sceneIdentifierName == "X_X" && SceneManager.GetActiveScene().name != "EmptyWorldTemplate"))
+        {
+            Debug.LogError("Scene Identifier is missing.");
+        }
     }
 
     public void ToggleCursor(bool toggleState)
@@ -60,5 +83,25 @@ public class GameManager : MonoBehaviour
     public float GetGameSpeed()
     {
         return Time.timeScale;
+    }
+
+    void StartEnablingObjects()
+    {
+        foreach (GameObject obj in enableObjects)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("An object is null");
+            }
+        }
+    }
+
+    public string GetSceneCommonName()
+    {
+        return sceneCommonName;
     }
 }

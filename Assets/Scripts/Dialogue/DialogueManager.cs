@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
 
+    public GameObject monologueUI;
     public GameObject FadeUI;
     public GameObject nextButton;
 
@@ -128,6 +129,27 @@ public class DialogueManager : MonoBehaviour
             {
                 //Fade and switch to the next scene, we do not need to do anything else
                 StartCoroutine(SwitchScene(switchSceneNode.sceneIndex));
+            }
+            else if (currentNode is WaitNode waitNode)
+            {
+                nextButton.SetActive(false);
+                StartCoroutine(WaitUntilTime(waitNode));
+            }
+            else if (currentNode is HideMonologueNode hideMonologueNode)
+            {
+                monologueUI.SetActive(hideMonologueNode.enableUI);
+
+                hideMonologueNode.GetNextNode();
+                currentNode = hideMonologueNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is PlayAudioNode playAudioNode)
+            {
+                PlaySfx(playAudioNode.sfxAudioClip);
+                
+                playAudioNode.GetNextNode();
+                currentNode = playAudioNode.GetNextNode();
+                ProcessNode();
             }
             else if (currentNode is EndNode)
             {
@@ -286,6 +308,31 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    private IEnumerator WaitUntilTime(WaitNode waitNode)
+    {
+        yield return new WaitForSeconds(waitNode.delayTime);
+
+        //Process node after waiting
+        currentNode = waitNode.GetNextNode();
+        ProcessNode();
+    }
+
+    private void PlaySfx(AudioClip clip)
+    {
+        //Create a temporary object for the audio source
+        GameObject sfxAudioObject = new GameObject("sfxAudioObject");
+        AudioSource sfxAudioSource = sfxAudioObject.AddComponent<AudioSource>();
+        
+        //Set the clip to the audio source
+        sfxAudioSource.clip = clip;
+        
+        //Play the audio
+        sfxAudioSource.Play();
+        
+        //Destroy the temporary object after the clip length + 0.5 seconds
+        Destroy(sfxAudioObject, clip.length + 0.5f);
     }
     
     private void OnPausedChanged(bool isPaused)
