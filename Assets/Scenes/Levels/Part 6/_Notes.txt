@@ -1,9 +1,0 @@
-Part 6 (Aftermath):
-Scenes:
-    6_1_JailCell
-    6_2_ThomasHouse
-
-Story Layout:
-In the jail cell, Kate admits everything going into detail about the murder 
-(My idea here is play as Thomas while kate narrates leading to a scary experience where the player knows there going to be murder.)
-Can experiment with this as the details of the murder are unknown

@@ -10,6 +10,7 @@ TagManager:
   - GroundGrass
   - GroundDirt
   - GroundStone
+  - Interactable
   layers:
   - Default
   - TransparentFX
