@@ -21,7 +21,7 @@ public class MoveObjectNode : DialogueNode
 
         Vector3 pos = new Vector3(posX, posY, posZ);
 
-        obj.transform.position = pos;
+        obj.transform.localPosition = pos;
         
         return GetOutputPort("nextNode").Connection.node as DialogueNode;
     }
