@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/Courtroom/CourtroomChair_Front.fbx.meta
 guid: bfdd01c1a09d3e244921daeac69f7d38
+========
+guid: e526319ddd3dc8a49876ec85c104ff5a
+>>>>>>>> 9b538ac8b7bd2a07ee0f42b521ce5b22d792124e:Assets/Models/Characters/Henry/Henry.fbx.meta
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 2
