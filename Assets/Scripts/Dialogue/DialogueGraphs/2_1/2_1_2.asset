@@ -37,7 +37,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: nextNode
-        node: {fileID: 8864433043460857683}
+        node: {fileID: -5247068795813323104}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   animationClip: {fileID: 0}
   targetAnimationObjectName: 
   nextNode: {fileID: 0}
-  delayTime: 10
+  delayTime: 8
 --- !u!114 &-7955800628461448964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +535,58 @@ MonoBehaviour:
   targetAnimationObjectName: 
   nextNode: {fileID: 0}
   objectName: DialogueAudioSource_Null
+--- !u!114 &-5247068795813323104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b33d5154819543b49a751e23bad315b, type: 3}
+  m_Name: Enable Object
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6776, y: 1096}
+  ports:
+    keys:
+    - nextNode
+    - input
+    values:
+    - _fieldName: nextNode
+      _node: {fileID: -5247068795813323104}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -8239415241185428128}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: -5247068795813323104}
+      _typeQualifiedName: DialogueNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNode
+        node: {fileID: 8864433043460857683}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  speakerName: 
+  dialogueText: 
+  audioClip: {fileID: 0}
+  animationClip: {fileID: 0}
+  targetAnimationObjectName: 
+  nextNode: {fileID: 0}
+  enableObject: 1
+  objectName: Fake_Henry01
 --- !u!114 &-4750552126312786091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1401,7 @@ MonoBehaviour:
   - {fileID: -1005015676486804610}
   - {fileID: -1245667318692209955}
   - {fileID: 8864433043460857683}
+  - {fileID: -5247068795813323104}
   startNode: {fileID: -6158655987075435702}
 --- !u!114 &153827916642371278
 MonoBehaviour:
@@ -2013,7 +2066,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -8239415241185428128}
+        node: {fileID: -5247068795813323104}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
