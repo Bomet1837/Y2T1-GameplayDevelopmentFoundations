@@ -145,10 +145,18 @@ public class DialogueManager : MonoBehaviour
             }
             else if (currentNode is PlayAudioNode playAudioNode)
             {
-                PlaySfx(playAudioNode.sfxAudioClip);
-                
+                PlaySfx(playAudioNode.sfxAudioClip, playAudioNode.objectName);
+
                 playAudioNode.GetNextNode();
                 currentNode = playAudioNode.GetNextNode();
+                ProcessNode();
+            }
+            else if (currentNode is EnableMouseNode enableMouseNode)
+            {
+                GameManager.instance.ToggleCursor(enableMouseNode.enableMouse);
+
+                enableMouseNode.GetNextNode();
+                currentNode = enableMouseNode.GetNextNode();
                 ProcessNode();
             }
             else if (currentNode is EndNode)
@@ -167,7 +175,7 @@ public class DialogueManager : MonoBehaviour
     {
         speakerText.text = "";
         dialogueText.text = "";
-        PlayAudioClip(null);
+        PlayAudioClip(null, null);
         
         dialogueObject.SetActive(false);
         
@@ -183,7 +191,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = node.dialogueText;
 
         //Play the audio
-        PlayAudioClip(node.audioClip);
+        PlayAudioClip(node.audioClip, node.objectName);
         
         //Play the animation
         TriggerAnimation(node);
@@ -193,7 +201,7 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayChoices(ChoiceNode node)
     {
-        PlayAudioClip(node.audioClip);
+        PlayAudioClip(node.audioClip, node.objectName);
         
         TriggerAnimation(node);
         
@@ -244,7 +252,7 @@ public class DialogueManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    private void PlayAudioClip(AudioClip clip)
+    private void PlayAudioClip(AudioClip clip, string objectName)
     {
         // Stop the previous audio if it's playing
         if (lastAudioSource != null && lastAudioSource.isPlaying)
@@ -261,7 +269,7 @@ public class DialogueManager : MonoBehaviour
             if (activeCamera != null)
             {
                 // Create a new GameObject for the AudioSource at the camera's position
-                GameObject audioObject = new GameObject("DialogueAudioSource");
+                GameObject audioObject = new GameObject(objectName);
                 audioObject.transform.position = activeCamera.transform.position;
 
                 // Add an AudioSource component, configure it, and play the clip
@@ -303,7 +311,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator SwitchScene(int sceneIndex)
     {
-        FadeUI.SetActive(true);
+        FadeController.instance.FadeOut(null);
         
         yield return new WaitForSeconds(1.5f);
         
@@ -319,10 +327,10 @@ public class DialogueManager : MonoBehaviour
         ProcessNode();
     }
 
-    private void PlaySfx(AudioClip clip)
+    private void PlaySfx(AudioClip clip, string objectName)
     {
         //Create a temporary object for the audio source
-        GameObject sfxAudioObject = new GameObject("sfxAudioObject");
+        GameObject sfxAudioObject = new GameObject(objectName);
         AudioSource sfxAudioSource = sfxAudioObject.AddComponent<AudioSource>();
         
         //Set the clip to the audio source
