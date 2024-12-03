@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,9 +35,9 @@ public class HintManager : MonoBehaviour
     }
 
     public void ShowHint(string title, string description, float duration)
-    { 
+    {
         hintUI.SetActive(true);
-
+        
         //Set the hint information
         if (title == null)
         {

@@ -14,9 +14,6 @@ public class RaycastShooter : MonoBehaviour
     private TMP_Text interactText;
 
     [SerializeField] private GameObject playerCam;
-    [SerializeField] private float interactDistance = 5f;
-
-    private bool canShowInteractUI = true;
 
     private void Awake()
     {
@@ -47,11 +44,6 @@ public class RaycastShooter : MonoBehaviour
         {
             RunInteractable();
         }
-
-        if (!canShowInteractUI && interactUi.gameObject.activeInHierarchy)
-        {
-            interactUi.SetActive(false);
-        }
     }
 
     void FixedUpdate()
@@ -73,18 +65,15 @@ public class RaycastShooter : MonoBehaviour
         //Check if the ray hits something
         if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Interactable"))
         {
-            if ((hit.distance <= interactDistance) && canShowInteractUI)
-            {
-                //Debug.Log("Hit");
-                hitObject = hit.collider.gameObject;
-
-                //Set the interactable
-                interactable = hitObject.GetComponent<IInteractable>();
-
-                //Set the interact UI information
-                interactUi.SetActive(true);
-                interactText.text = interactable.HintInformation;
-            }
+            //Debug.Log("Hit");
+            hitObject = hit.collider.gameObject;
+            
+            //Set the interactable
+            interactable = hitObject.GetComponent<IInteractable>();
+            
+            //Set the interact UI information
+            interactUi.SetActive(true);
+            interactText.text = interactable.HintInformation;
         }
         else
         {
@@ -108,10 +97,5 @@ public class RaycastShooter : MonoBehaviour
     public GameObject GetHitObject()
     {
         return hitObject;
-    }
-
-    public void ForceHideInteractUI()
-    {
-        canShowInteractUI = false;
     }
 }

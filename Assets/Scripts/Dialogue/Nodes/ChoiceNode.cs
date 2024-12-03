@@ -3,11 +3,8 @@ using XNode;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "ChoiceNode", menuName = "Dialogue/ChoiceNode")]
-
 public class ChoiceNode : DialogueNode
 {
-    public string objectName = "ChoiceAudioSource_Null";
-    
     [System.Serializable]
     public class Choice
     {
