@@ -58,6 +58,13 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    public void LoadModelViewer()
+    {
+        AudioManager.instance.PlayUIClick();
+        
+        LoadingController.instance.LoadScene(SceneUtility.GetBuildIndexByScenePath("ModelViewer"));
+    }
+
     public void QuitGame()
     {
         AudioManager.instance.PlayUIClick();
